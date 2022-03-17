@@ -24,4 +24,22 @@ function removeLinesOfFiles(files) {
   })
 }
 
-removeLinesOfFiles(getLogFiles())
+
+function watchNewFiles() {
+  fs.watch(ORIGIN_DIR, (eventType, filename) => {
+    console.log(eventType, filename)
+    if (filename) {
+      const originFilePath = `${ORIGIN_DIR}/${filename}`
+      const destinationFilePath = `${DESTINATION_DIR}/${filename}`
+      removeLinesWithWords(originFilePath, REMOVE_LINES_WITH, destinationFilePath)
+    }
+  })
+}
+
+function runApp() {
+  const files = getLogFiles()
+  removeLinesOfFiles(files)
+  watchNewFiles()
+}
+
+runApp()
