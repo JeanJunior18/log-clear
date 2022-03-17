@@ -1,0 +1,14 @@
+{
+  "name": "log-clear",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
